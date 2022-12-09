@@ -1,49 +1,32 @@
 import pygame.draw
-import math
 Grey = (155, 155, 155)
 Yellow = (155, 155, 0)
+RED = (255, 0, 0)
 WIDTH = 1000
 HEIGHT = 800
 FPS = 30
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 rast = 50
+color = Yellow
 SIZE = 50
-AAA = 0
-bullets = []
-sbullets = []
-TEXTURE1 = [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            [1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 7, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-            [1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1],
-            [1, 0, 0, 0, 0, 0, 0, 0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 1],
-            [1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 1],
-            [1, 5, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-            [1, 0, 0, 0, 1, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-            [1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1],
-            [1, 0, 0, 0, 1, 0, 0, 0, 2, 2, 2, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1],
-            [1, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1],
-            [1, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-            [1, 0, 0, 0, 1, 0, 0, 0, 2, 2, 2, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-            [2, 0, 0, 0, 2, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-            [2, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-            [2, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-            [2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]]
+
 
 
 TEXTURE2 = [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 1, 1, 0, 0, 1],
-            [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1],
             [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+            [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 1],
+            [1, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
             [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-            [1, 2, 2, 2, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-            [1, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+            [1, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+            [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
             [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 1],
             [1, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-            [1, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-            [1, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 1],
-            [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 1],
-            [1, 0, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 2, 0, 0, 0, 1],
-            [1, 0, 0, 0, 2, 2, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-            [1, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+            [1, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 1],
+            [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+            [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+            [1, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+            [1, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
             [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]]
 A = 0
 B = 0
@@ -56,25 +39,25 @@ class Winds:
         self.y = y
     def move_winds(self):
         v = 8
-        self.x += v
+        self.x -= v
     def draw_winds(self):
         pygame.draw.rect(screen, Grey, (self.x, self.y, 2*SIZE, 2*SIZE))
     def wind_monster_attack(self, sniper):
         k = 5
         spisok = []
 
-        #for j, a_row in enumerate(a):
-            #for i, a_row_col in enumerate(a_row):
-                    #if a_row_col == 2:
 
         for i in range(len(a)):
             for j in range(len(a)):
                 if a[i][j] == 2:
-                    b = (sniper.x < rast * j) and (abs(sniper.y - rast*i) < SIZE/2)
+                    b = (sniper.x < rast * j) and (sniper.y > rast*i) and ((sniper.y + (sniper.a)/2) < (rast*i + SIZE))
                     spisok.append(b)
         if not any(spisok):
             sniper.x -= k
-            print('не за стеной')
+            if sniper.check_sniper_collisionXXX():
+                sniper.color = RED
+
+
 
 class Sniper:
     def __init__(self, a, color, x, y, vx = 0, vy = 0):
@@ -87,8 +70,11 @@ class Sniper:
     def draw_walls(self):
         for i in range(len(a)):
             for j in range(len(a[i])):
-                if a[i][j] == 1 or a[i][j] == 2 :
-                    screen.blit(pygame.image.load('python sniper.jpg'), (rast * j, rast * i))
+                if a[i][j] == 1 or a[i][j] == 2:
+                    if a == TEXTURE2:
+                        screen.blit(pygame.image.load('wind.jpg'), (rast * j, rast * i))
+                    else:
+                        screen.blit(pygame.image.load('python sniper.jpg'), (rast * j, rast * i))
                 if a[i][j] == 8:
                     screen.blit(pygame.image.load('портал питон.jpeg'), (rast * j, rast * i))
 
@@ -138,16 +124,18 @@ class Sniper:
                                 self.x = rast * j - self.a
                             if self.x > (rast * j):
                                 self.x = rast * j + SIZE
+                        return True
 
     def draw(self):
-        pygame.draw.rect(screen, Yellow, (self.x, self.y, self.a, self.a))
+        pygame.draw.rect(screen, self.color, (self.x, self.y, self.a, self.a))
 
 
 start_ticks = pygame.time.get_ticks()
 finished = False
 r = 8
-winds = [Winds(300, 150)]
-snipers = [Sniper(20, Yellow, 500, 90, 100, 100)]
+winds = [Winds(600, 350), Winds(800, 550), Winds(900, 900)]
+snipers = [Sniper(20, color, 50, 730, 40, 40)]
+
 while not finished:
     clock = pygame.time.Clock()
     pygame.time.set_timer(pygame.USEREVENT, 1000)
@@ -159,19 +147,18 @@ while not finished:
         sniper.check_sniper_collisionYYY()
         sniper.check_sniper_collisionXXX()
         for wind in winds:
+
             if (seconds % 3 > 0.11) and (seconds % 3 < 0.71):
                 wind.wind_monster_attack(sniper)
                 wind.move_winds()
                 wind.draw_winds()
-
+            if (seconds % 3 > 1) and (seconds % 3 < 2):
+                sniper.color = Yellow
+            if not (seconds % 3 > 0.11) and (seconds % 3 < 0.71):
+                wind.x = 800
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 finished = True
-
-
-
-
-
 
     key = pygame.key.get_pressed()
     for sniper in snipers:
