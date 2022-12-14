@@ -10,6 +10,7 @@ f_score = pg.font.Font(None, 36)
 screen = pg.display.set_mode((WIDTH, HEIGHT))
 x = 500
 y = 300
+p = 0
 speed = 1
 npc = []
 npc1 = []
@@ -21,13 +22,21 @@ stalin_bullets = []
 Wind = []
 running = True
 final = False
+key1 = 1
+key10 = 0
+key2 = 1
+key20 = 0
+key3 = 1
+key30 = 0
+key4 = 1
+key40 = 0
 level = 0
 size = 50
 weapon = 1
 stalin_shoot = 1
 texX = [[], [], []]
 texY = [[], [], []]
-texture1 = [[0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0],
+texture1 = [[0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1],
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             [0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1],
@@ -326,7 +335,7 @@ class Winds:
     def __init__(self, r):
         self.r = r
     def move_winds(self):
-        v = 3
+        v = 4
         self.r += v
     def draw_winds(self):
         pygame.draw.circle(screen, (150, 150, 150), (WIDTH, HEIGHT/2), self.r, 10)
@@ -380,6 +389,112 @@ def shtryh(x, y):
             #if ((x) - j*50) ** 2 + ((y) - i*20) ** 2 <= 14400:
             color = (0, 0, 0)
             pygame.draw.rect(screen, color, (j * 50, i * 20, 50, 20), 1)
+def portal():
+    global key10, key20, key30, key40, t, p
+    pygame.draw.circle(screen, (60, 60, 60), (390, 240), 36)
+    pygame.draw.circle(screen, (60, 60, 60), (390, 460), 36)
+    pygame.draw.circle(screen, (60, 60, 60), (610, 240), 36)
+    pygame.draw.circle(screen, (60, 60, 60), (610, 460), 36)
+    pygame.draw.circle(screen, (120, 120, 120), (500, 350), 120)
+    pygame.draw.circle(screen, (100, 100, 100), (500, 350), 100)
+    pygame.draw.circle(screen, (80, 80, 80), (500, 350), 80)
+    pygame.draw.circle(screen, (60, 60, 60), (500, 350), 60)
+    pygame.draw.circle(screen, (40, 40, 40), (500, 350), 40)
+    pygame.draw.circle(screen, (20, 20, 20), (500, 350), 20)
+    if key10 and key20 and key30 and key40:
+        if p <= 6:
+            if p <= 1:
+                pygame.draw.circle(screen, (0, 0, 120), (500, 350), 120)
+                p += 1/30
+            elif p <= 2:
+                pygame.draw.circle(screen, (0, 0, 120), (500, 350), 120)
+                pygame.draw.circle(screen, (0, 0, 100), (500, 350), 100)
+                p += 1/30
+            elif p <= 3:
+                pygame.draw.circle(screen, (0, 0, 120), (500, 350), 120)
+                pygame.draw.circle(screen, (0, 0, 100), (500, 350), 100)
+                pygame.draw.circle(screen, (0, 0, 80), (500, 350), 80)
+                p += 1/30
+            elif p <= 4:
+                pygame.draw.circle(screen, (0, 0, 120), (500, 350), 120)
+                pygame.draw.circle(screen, (0, 0, 100), (500, 350), 100)
+                pygame.draw.circle(screen, (0, 0, 80), (500, 350), 80)
+                pygame.draw.circle(screen, (0, 0, 60), (500, 350), 60)
+                p += 1/30
+            elif p <= 5:
+                pygame.draw.circle(screen, (0, 0, 120), (500, 350), 120)
+                pygame.draw.circle(screen, (0, 0, 100), (500, 350), 100)
+                pygame.draw.circle(screen, (0, 0, 80), (500, 350), 80)
+                pygame.draw.circle(screen, (0, 0, 60), (500, 350), 60)
+                pygame.draw.circle(screen, (0, 0, 40), (500, 350), 40)
+                p += 1/30
+            elif p <= 6:
+                pygame.draw.circle(screen, (0, 0, 120), (500, 350), 120)
+                pygame.draw.circle(screen, (0, 0, 100), (500, 350), 100)
+                pygame.draw.circle(screen, (0, 0, 80), (500, 350), 80)
+                pygame.draw.circle(screen, (0, 0, 60), (500, 350), 60)
+                pygame.draw.circle(screen, (0, 0, 40), (500, 350), 40)
+                pygame.draw.circle(screen, (0, 0, 20), (500, 350), 20)
+                p += 1 / 30
+        if p > 6:
+            pygame.draw.circle(screen, (0, 0, 120), (500, 350), 120)
+            pygame.draw.circle(screen, (0, 0, 100), (500, 350), 100)
+            pygame.draw.circle(screen, (0, 0, 80), (500, 350), 80)
+            pygame.draw.circle(screen, (0, 0, 60), (500, 350), 60)
+            pygame.draw.circle(screen, (0, 0, 40), (500, 350), 40)
+            pygame.draw.circle(screen, (255, 255, 255), (500, 350), 20)
+    if key1:
+        if (x - 610) ** 2 + (y - 460) ** 2 <= 56 ** 2:
+            key10 = 1
+        if key10:
+            pygame.draw.circle(screen, (255, 255, 0), (610, 460), 20)
+    if key2:
+        if (x - 390) ** 2 + (y - 240) ** 2 <= 56 ** 2:
+            key20 = 1
+        if key20:
+            pygame.draw.circle(screen, (0, 255, 0), (390, 240), 20)
+    if key3:
+        if (x - 390) ** 2 + (y - 460) ** 2 <= 56 ** 2:
+            key30 = 1
+        if key30:
+            pygame.draw.circle(screen, (255, 255, 0), (390, 460), 20)
+    if key4:
+        if (x - 610) ** 2 + (y - 240) ** 2 <= 56 ** 2:
+            key40 = 1
+        if key40:
+            pygame.draw.circle(screen, (0, 255, 0), (610, 240), 20)
+def levels():
+    global key1, key2, key3, key4
+    if level == 0:
+        lvl0()
+    elif level == 1:
+        texture[0][19] = 0
+        texture[6][19] = 1
+        lvl1()
+        if not key1:
+            screen.blit(pygame.image.load('old_key.png'), (WIDTH - 40, HEIGHT - 40))
+        if x >= WIDTH - 60 and y >= HEIGHT - 60:
+            key1 = 1
+    elif level == 2:
+        lvl0()
+        if not key2:
+            screen.blit(pygame.image.load('old_key.png'), (WIDTH / 2, HEIGHT / 2))
+        if WIDTH / 2 + 40 >= x >= WIDTH / 2 - 50 and HEIGHT / 2 >= y >= HEIGHT / 2 - 50:
+            key2 = 1
+    elif level == 3:
+        texture[0][19] = 1
+        texture[6][19] = 0
+        lvl1()
+        if not key3:
+            screen.blit(pygame.image.load('old_key.png'), (WIDTH - 70, HEIGHT / 2 - 40))
+        if x >= WIDTH - 90 and HEIGHT / 2 >= y >= HEIGHT / 2 - 90:
+            key3 = 1
+    elif level == 4:
+        lvl0()
+        if not key4:
+            screen.blit(pygame.image.load('old_key.png'), (WIDTH / 2, HEIGHT / 2))
+        if WIDTH / 2 + 40 >= x >= WIDTH / 2 - 50 and HEIGHT / 2 >= y >= HEIGHT / 2 - 50:
+            key4 = 1
 
 def lvl1():
     screen.fill((0, 0, 0))
@@ -396,9 +511,11 @@ def lvl0():
     screen.blit(screen, (0, 0))
     shtryh(x, y)
     draw_walls(texture0)
+    portal()
 
-Exit = pygame.image.load('exit_door.png')
-Exit1 = pygame.image.load('exit_door_180.png')
+breeze = True
+Exit = pygame.image.load('дверь.png')
+Exit1 = pygame.image.load('дверь.png')
 Exx = WIDTH - 80
 Exy = HEIGHT - 103
 texture = texture0
@@ -413,7 +530,7 @@ score2 = 0
 stalin =NPC(WIDTH - 100, 50, 1, 1, 'Stalin.jpg', 50, 1)
 ghost = NPC(WIDTH - 150, 100, 0.5, 1, 'Ghost.jpg', 50, 15)
 stalin2 =NPC(WIDTH - 100, 50, 1, 2, 'Stalin.jpg', 50, 12)
-wind1 = Winds(100)
+wind1 = Winds(0)
 Wind += [wind1]
 npc_gun = Gun(screen, stalin.x, stalin.y)
 npc += [ghost]
@@ -422,17 +539,7 @@ npc2 += [stalin2]
 l = 1
 while True:
     if running:
-        if level == 0:
-            lvl0()
-        elif level == 1:
-            lvl1()
-        elif level == 2:
-            lvl0()
-        elif level == 3:
-            lvl1()
-        elif level == 4:
-            lvl0()
-
+        levels()
         gun.x = x
         gun.y = y
         if pg.time.get_ticks() > (t + 2000):
@@ -504,16 +611,20 @@ while True:
         screen.blit(pygame.image.load('11781957.png'), (x, y))
         if level == 3:
             for wind in Wind:
-                if (t3 + 1000) <= pg.time.get_ticks() <= (t3 + 2500):
+                if (t3 + 0) <= pg.time.get_ticks() <= (t3 + 1300):
                     wind.draw_winds()
                     wind.move_winds()
-                    if (wind.r - 50)**2 <= (WIDTH - x - 20)**2 + (HEIGHT/2 - y - 20)**2 <= wind.r**2:
+                    if (wind.r - 10)**2 <= (WIDTH - x - 20)**2 + (HEIGHT/2 - y - 20)**2 <= wind.r**2:
                         if check(x, y, texture) and check(x, y + 40, texture) and 0 < x and check_for_wind(x + 20, y + 20, texture):
-                            x -= 4
+                            an = math.atan2((y - 350), (x - 1000))
+                            x += 4 * math.cos(an)
+                            y += 4 * math.sin(an)
+                            breeze = False
                         elif check_for_wind(x + 20, y + 20, texture):
                             pygame.draw.rect(screen, (150, 0, 0), (x, y, 40, 40))
-                elif pg.time.get_ticks() > (t3 + 2500):
-                    wind.r = 100
+                elif pg.time.get_ticks() > (t3 + 1300):
+                    breeze = True
+                    wind.r = 0
                     t3 = pg.time.get_ticks()
         if (x + 20 - Exx) ** 2 + (y + 20 - Exy) ** 2 <= 40000:
             screen.blit(Exit, (Exx, Exy))
@@ -532,9 +643,10 @@ while True:
                         t = pg.time.get_ticks()
                         buttons_shooting(keys, x, y)
                         score2 -= 1      #чтобы у нового оружия было ограничение на патроны
-        walk = walking(keys, x, y, speed)
-        x = walk[0]
-        y = walk[1]
+        if breeze:
+            walk = walking(keys, x, y, speed)
+            x = walk[0]
+            y = walk[1]
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
@@ -588,7 +700,7 @@ while True:
             y = 300
             level = 0
             teleportxy = []
-        if x <= 65 and 197 >= y >= 147 and level == 3:  #Переход из 3 уровня в 0
+        if x >= WIDTH - 65 and HEIGHT/2 >= y >= HEIGHT/2 - 50 and level == 3:  #Переход из 3 уровня в 0
             bullets = []
             Exit = pygame.image.load('exit_door_180.png')
             Exx = WIDTH - 80
@@ -639,8 +751,8 @@ while True:
         if x <= 65 and y >= HEIGHT - 103 and level == 0: #переход из 0 уровня в 3
             bullets = []
             Exit = pygame.image.load('exit_door_180.png')
-            Exx = 50
-            Exy = 150
+            Exx = WIDTH - 30
+            Exy = HEIGHT/2 - 50
             texture = texture1
             x = 50
             y = 50
@@ -658,11 +770,11 @@ while True:
         screen.fill((0, 0, 0))
         f1 = pygame.font.Font(None, 60)
         f2 = pygame.font.Font(None, 62)
-        text1 = f1.render("Вы умерли ", True,
+        text1 = f1.render("СМЕРТЬ", True,
                           (255, 0, 0))                          #экран смерти
         text2 = f1.render("Перезапустить", True,
                           (255, 0, 0))
-        screen.blit(text1, (180, 200))
+        screen.blit(text1, (200, 200))
         pygame.draw.rect(screen, (250, 250, 0), (150, 500, 305, 45))
         screen.blit(text2, (150, 500))
         for event in pg.event.get():
