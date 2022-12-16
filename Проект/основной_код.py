@@ -12,7 +12,7 @@ x = 500
 y = 300
 p = 0
 r = 35
-speed = 1.1
+speed = 1
 npc = []
 npc1 = []
 npc2 = []
@@ -33,7 +33,7 @@ key4 = 0
 key40 = 0
 level = 0
 size = 50
-weapon = 1
+weapon = 2
 craziness = 0
 stalin_shoot = 1
 x0 = 100
@@ -41,7 +41,7 @@ y0 = 200
 hP = 50
 HP = 100
 HP0 = 100
-kt = 0
+chto_to = 0
 good = 0
 texX = [[], [], []]
 texY = [[], [], []]
@@ -90,20 +90,20 @@ texture3 = [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
             [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1],
             [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]]
 
-texture2 = [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            [1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-            [1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1],
-            [1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1],
-            [1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1],
-            [1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1],
-            [1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1],
-            [1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1],
-            [1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1],
-            [1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1],
-            [1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1],
-            [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1],
-            [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]]
+texture2 = [[1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+            [0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+            [0, 0, 1, 0, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 0, 1],
+            [0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1],
+            [1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0, 1],
+            [1, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1],
+            [0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1],
+            [0, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 0, 0, 1],
+            [0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1],
+            [0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1],
+            [0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1],
+            [0, 1, 1, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 1],
+            [0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+            [1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1]]
 
 def draw_walls(texture):
     """
@@ -117,6 +117,9 @@ def draw_walls(texture):
                         screen.blit(pygame.image.load(
                             'iRR_GK-U1lma2Y5UBqXL5ux9UR4KR4BJ0Z2hHVIm0-bBrfN5Lr4Owz4utX7za9UnyEm124OFwNk5TtjyY-qB0lhN.jpg'),
                                     (size * j, size * i))
+                elif level == 2:
+                    if (x - 5 - size * j) ** 2 + (y - 5 - size * i) ** 2 <= 110**2:
+                        screen.blit(pygame.image.load('crazy block.jpg'), (size * j, size * i))
                 else:
                     screen.blit(pygame.image.load('crazy block.jpg'), (size * j, size * i))
                 if craziness:
@@ -163,7 +166,7 @@ class Gun:
         """
         так стреляют npc
         """
-        new_ball = snaryad(self.x + 50, self.y, (255, 10, 10), 10, v)
+        new_ball = snaryad(self.x + 50, self.y, (255, 10, 10), 10, 2)
         self.an = math.atan2((y - new_ball.y), (x - new_ball.x))
         new_ball.vx = math.cos(self.an) / 2
         new_ball.vy = math.sin(self.an) / 2
@@ -177,11 +180,7 @@ class Gun:
         """
         так стреляю я
         """
-        global kt
-        if not kt:
-            new_ball = snaryad(self.x + 20, self.y + 20, (10, 120, 10), 5, 2)
-        else:
-            new_ball = snaryad(self.x + 20, self.y + 20, (10, 120, 10), 5, 30)
+        new_ball = snaryad(self.x + 20, self.y + 20, (10, 120, 10), 5, 2)
         self.an = math.atan2((event.pos[1] - new_ball.y), (event.pos[0] - new_ball.x))
         new_ball.vx = 2 * math.cos(self.an)
         new_ball.vy = 2 * math.sin(self.an)
@@ -478,13 +477,13 @@ def walking(keys, x, y, speed):
     """
     перемещение персонажа
     """
-    if keys[pygame.K_d] and check(x + 41, y, texture) and check(x + 41, y + 40, texture) and x < WIDTH - 42:
+    if keys[pygame.K_d] and check(x + 40 + speed, y, texture) and check(x + 40 + speed, y + 40, texture) and x < WIDTH - 40 - speed:
         x += speed
-    if keys[pygame.K_a] and check(x - 1, y, texture) and check(x - 1, y + 40, texture) and x > 0:
+    if keys[pygame.K_a] and check(x - speed, y, texture) and check(x - speed, y + 40, texture) and x > speed:
         x -= speed
-    if keys[pygame.K_w] and check(x, y - 1, texture) and check(x + 40, y - 1, texture) and y > 0:
+    if keys[pygame.K_w] and check(x, y - speed, texture) and check(x + 40, y - speed, texture) and y > speed:
         y -= speed
-    if keys[pygame.K_s] and check(x, y + 41, texture) and check(x + 40, y + 41, texture) and y < HEIGHT - 42:
+    if keys[pygame.K_s] and check(x, y + 40 + speed, texture) and check(x + 40, y + 40 + speed, texture) and y < HEIGHT - 41 - speed:
         y += speed
     return [x, y]
 
@@ -500,7 +499,7 @@ def shtryh():
 
 
 def portal():
-    global key10, key20, key30, key40, t, p, kt, speed
+    global key10, key20, key30, key40, t, p, kt, speed, running, final, good
     pygame.draw.circle(screen, (60, 60, 60), (390, 240), 36)
     pygame.draw.circle(screen, (40, 40, 40), (390, 240), 28)
     pygame.draw.circle(screen, (20, 20, 20), (390, 240), 20)
@@ -520,53 +519,39 @@ def portal():
     pygame.draw.circle(screen, (40, 40, 40), (500, 350), 40)
     pygame.draw.circle(screen, (20, 20, 20), (500, 350), 20)
     if key10 and key20 and key30 and key40:
-        if p <= 7:
-            if p <= 1:
-                pygame.draw.circle(screen, (0, 0, 120), (500, 350), 120)
-                p += 1 / 30
-            elif p <= 2:
-                pygame.draw.circle(screen, (0, 0, 120), (500, 350), 120)
-                pygame.draw.circle(screen, (0, 0, 100), (500, 350), 100)
-                p += 1 / 30
-            elif p <= 3:
-                pygame.draw.circle(screen, (0, 0, 120), (500, 350), 120)
-                pygame.draw.circle(screen, (0, 0, 100), (500, 350), 100)
-                pygame.draw.circle(screen, (0, 0, 80), (500, 350), 80)
-                p += 1 / 30
-            elif p <= 4:
-                pygame.draw.circle(screen, (0, 0, 120), (500, 350), 120)
-                pygame.draw.circle(screen, (0, 0, 100), (500, 350), 100)
-                pygame.draw.circle(screen, (0, 0, 80), (500, 350), 80)
-                pygame.draw.circle(screen, (0, 0, 60), (500, 350), 60)
-                p += 1 / 30
-            elif p <= 5:
-                pygame.draw.circle(screen, (0, 0, 120), (500, 350), 120)
-                pygame.draw.circle(screen, (0, 0, 100), (500, 350), 100)
-                pygame.draw.circle(screen, (0, 0, 80), (500, 350), 80)
-                pygame.draw.circle(screen, (0, 0, 60), (500, 350), 60)
-                pygame.draw.circle(screen, (0, 0, 40), (500, 350), 40)
-                p += 1 / 30
-            elif p <= 6:
-                pygame.draw.circle(screen, (0, 0, 120), (500, 350), 120)
-                pygame.draw.circle(screen, (0, 0, 100), (500, 350), 100)
-                pygame.draw.circle(screen, (0, 0, 80), (500, 350), 80)
-                pygame.draw.circle(screen, (0, 0, 60), (500, 350), 60)
-                pygame.draw.circle(screen, (0, 0, 40), (500, 350), 40)
-                pygame.draw.circle(screen, (0, 0, 20), (500, 350), 20)
-                p += 1 / 30
-            elif p <= 7:
-                screen.blit(pygame.image.load('Портал.png'), (244, 94))
-                p += 1 / 120
-        if 8 > p > 7:
-            kt = 1
-            speed = 3
-        if p == 8:
+        if p <= 1:
+            pygame.draw.circle(screen, (0, 0, 120), (500, 350), 120)
+            p += 1 / 30
+        elif p <= 2:
+            pygame.draw.circle(screen, (0, 0, 120), (500, 350), 120)
+            pygame.draw.circle(screen, (0, 0, 100), (500, 350), 100)
+            p += 1 / 30
+        elif p <= 3:
+            pygame.draw.circle(screen, (0, 0, 120), (500, 350), 120)
+            pygame.draw.circle(screen, (0, 0, 100), (500, 350), 100)
+            pygame.draw.circle(screen, (0, 0, 80), (500, 350), 80)
+            p += 1 / 30
+        elif p <= 4:
+            pygame.draw.circle(screen, (0, 0, 120), (500, 350), 120)
+            pygame.draw.circle(screen, (0, 0, 100), (500, 350), 100)
+            pygame.draw.circle(screen, (0, 0, 80), (500, 350), 80)
+            pygame.draw.circle(screen, (0, 0, 60), (500, 350), 60)
+            p += 1 / 30
+        elif p <= 5:
+            pygame.draw.circle(screen, (0, 0, 120), (500, 350), 120)
+            pygame.draw.circle(screen, (0, 0, 100), (500, 350), 100)
+            pygame.draw.circle(screen, (0, 0, 80), (500, 350), 80)
+            pygame.draw.circle(screen, (0, 0, 60), (500, 350), 60)
+            pygame.draw.circle(screen, (0, 0, 40), (500, 350), 40)
+            p += 1 / 30
+        elif p <= 6:
             pygame.draw.circle(screen, (0, 0, 120), (500, 350), 120)
             pygame.draw.circle(screen, (0, 0, 100), (500, 350), 100)
             pygame.draw.circle(screen, (0, 0, 80), (500, 350), 80)
             pygame.draw.circle(screen, (0, 0, 60), (500, 350), 60)
             pygame.draw.circle(screen, (0, 0, 40), (500, 350), 40)
             pygame.draw.circle(screen, (0, 0, 20), (500, 350), 20)
+            p += 1 / 30
     if key1:
         if (x - 610) ** 2 + (y - 460) ** 2 <= 56 ** 2:
             key10 = 1
@@ -587,7 +572,16 @@ def portal():
             key40 = 1
         if key40:
             pygame.draw.circle(screen, (0, 255, 0), (610, 240), 20)
-
+    if 6 <= p <= 7:
+        screen.blit(pygame.image.load('Портал.png'), (244, 94))
+        key10 = 0
+        key20 = 0
+        key30 = 0
+        key40 = 0
+        if 530 >= x >= 470 and 380 >= y >= 320:
+            running = False
+            final = True
+            good = 1
 
 def levels():
     global key1, key2, key3, key4, texture
@@ -604,16 +598,24 @@ def levels():
         if x >= WIDTH - 60 and y >= HEIGHT - 60:
             key1 = 1
     elif level == 2:
-        global speed
-        screen.fill((0, 0, 50))
+        global chto_to
+        screen.fill((0, 0, 0))
         screen.blit(screen, (0, 0))
+        pygame.draw.circle(screen, (0, 0, 20), (x + 20, y + 20), 110)
+        pygame.draw.circle(screen, (0, 0, 30), (x + 20, y + 20), 100)
+        pygame.draw.circle(screen, (0, 0, 40), (x + 20, y + 20), 90)
+        pygame.draw.circle(screen, (0, 0, 50), (x + 20, y + 20), 80)
         shtryh()
         texture = texture2
         draw_walls(texture2)
-        speed = 3
         if not key2:
-            screen.blit(pygame.image.load('old_key.png'), (500, 300))
-        if WIDTH / 2 + 40 >= x >= WIDTH / 2 - 50 and HEIGHT / 2 >= y >= HEIGHT / 2 - 50:
+            if not npc2 and chto_to < 1000:
+                pygame.draw.circle(screen, (200, 200, 0), (920, 70), 30)
+                screen.blit(pygame.image.load('old_key.png'), (900, 50))
+                chto_to += 1
+            if (x - 900) ** 2 + (y - 50) ** 2 <= 110 ** 2:
+                screen.blit(pygame.image.load('old_key.png'), (900, 50))
+        if 940 >= x >= 900 and 50 >= y >= 10:
             key2 = 1
     elif level == 3:
         texture[0][19] = 1
@@ -687,7 +689,7 @@ t2 = 0
 t3 = 0
 t4 = 0
 score = 100
-score2 = 0
+score2 = 20
 stalin = NPC(WIDTH - 100, 50, 1, 1, 'Stalin.jpg', 50, 1)
 ghost = NPC(WIDTH - 150, 100, 0.7, 1, 'Ghost.jpg', 50, 45)
 stalin2 = NPC(WIDTH - 100, 50, 1, 2, 'Stalin.jpg', 50, 12)
@@ -702,21 +704,6 @@ l = 1
 while True:
     if running:
         levels()
-        if kt:
-            screen.blit(pygame.image.load('рыцарь.png'), (175, 20))
-            k = 60 / 50
-            pygame.draw.rect(screen, (0, 255, 0), (470, 100, hP * k, 20))
-            pygame.draw.rect(screen, (255, 0, 0), (470 + hP * k, 100, 60 - hP * k, 20))
-            for sbullet in sbullets:
-                if 650 >= sbullet.x >= 350 and 550 >= sbullet.y >= 150:
-                    hP -= 1
-                    sbullets.remove(sbullet)
-            if hP <= 0:
-                p = 8
-                kt = 0
-                good = 1
-                running = False
-                final = True
         gun.x = x
         gun.y = y
         if pg.time.get_ticks() > (t + 1300):
@@ -755,7 +742,6 @@ while True:
                         weapon = 2  # получили новое оружие
                         score2 += 70
                         npc1.remove(np)  # при контакте мы его убираем
-                        print(npc1)
                         stalin_shoot = 0  # чтобы не стрелял после исчезновения
                     if stalin_shoot:  # он будет в нас стрелять при приближении
                         if ((x + 20) - (stalin.x + stalin.size / 2)) ** 2 + (
@@ -763,6 +749,7 @@ while True:
                             if pg.time.get_ticks() > (t1 + 1800):  # стреляет раз в 1.8 секунды
                                 t1 = pg.time.get_ticks()
                                 npc_gun.fire1()
+                                print('shoot')
         for new_ball in stalin_bullets:
             if (new_ball.x - (x + 20)) ** 2 + (new_ball.y - (y + 20)) ** 2 <= 400:  # мы погибаем при попадании его пули
                 if pg.time.get_ticks() > (t + 300):
@@ -786,8 +773,9 @@ while True:
                     stalin2.teleport(teleportxy[2], teleportxy[3])
                     stalin2.x = teleportxy[0]
                     stalin2.y = teleportxy[1]
-                stalin2.draw(screen, 2)
-                stalin2.HP(stalin2.x, stalin2.y)
+                if (x + 20 - stalin2.x) ** 2 + (y + 20 - stalin2.y) ** 2 <= 135**2:
+                    stalin2.draw(screen, 2)
+                    stalin2.HP(stalin2.x, stalin2.y)
                 for sbullet in sbullets:
                     if stalin2.hit(sbullet):
                         stalin2.hp -= 1
@@ -840,6 +828,9 @@ while True:
         if not craziness:
             if level == 1 or level == 3:
                 if (x + 20 - Exx) ** 2 + (y + 20 - Exy) ** 2 <= 40000:
+                    screen.blit(Exit, (Exx, Exy))
+            elif level == 2:
+                if (x + 20 - Exx) ** 2 + (y + 20 - Exy) ** 2 <= 110**2:
                     screen.blit(Exit, (Exx, Exy))
             else:
                 screen.blit(Exit, (Exx, Exy))
@@ -897,96 +888,96 @@ while True:
             if (x + 20 - new_ball.x) ** 2 + (y + 20 - new_ball.y) ** 2 <= 40000:
                 new_ball.draw(screen)
             new_ball.flight1()
-            if pg.time.get_ticks() > (t + 1400):  # полёт и частота выстрелов снарядов, выпущенных нпс
+            if pg.time.get_ticks() > (t + 1000):  # полёт и частота выстрелов снарядов, выпущенных нпс
                 t = pg.time.get_ticks()
                 stalin_bullets.pop(stalin_bullets.index(new_ball))
         for sbullet in sbullets:
             sbullet.draw(screen)  # полёт снарядов, взрывающих стены
             sbullet.flight2(level)
-        if not kt:
-            if x >= WIDTH - 65 and y <= 50 and level == 1:  # Переход из 1 уровня в 0
-                bullets = []  # убираем все летающие снаряды
-                Exit = pygame.image.load('exit_door_180.png')
-                Exx = WIDTH - 80  # ставим выход в нужное место и нужную картинку на него
-                Exy = HEIGHT - 103
-                texture = texture0  # задаём текстуру уровня
-                x = WIDTH - 150
-                y = HEIGHT - 100 # координаты нашего появления
-                level = 0
-                # ниже аналогично
-            if 350 <= x <= 365 and 350 >= y >= 300 and level == 2:  # Переход из 2 уровня в 0
+        if x >= WIDTH - 65 and y <= 50 and level == 1:  # Переход из 1 уровня в 0
+            bullets = []  # убираем все летающие снаряды
+            sbullets = []
+            Exit = pygame.image.load('exit_door_180.png')
+            Exx = WIDTH - 80  # ставим выход в нужное место и нужную картинку на него
+            Exy = HEIGHT - 103
+            texture = texture0  # задаём текстуру уровня
+            x = WIDTH - 150
+            y = HEIGHT - 100 # координаты нашего появления
+            level = 0
+            # ниже аналогично
+        if 300 <= x <= 315 and 350 >= y >= 300 and level == 2:  # Переход из 2 уровня в 0
+            bullets = []
+            Exit = pygame.image.load('exit_door_180.png')
+            Exx = WIDTH - 80
+            Exy = HEIGHT - 103
+            texture = texture0
+            x = 100
+            y = 55
+            level = 0
+            teleportxy = []
+        if x >= WIDTH - 65 and HEIGHT / 2 >= y >= HEIGHT / 2 - 50 and level == 3:  # Переход из 3 уровня в 0
+            bullets = []
+            Exit = pygame.image.load('exit_door_180.png')
+            Exx = WIDTH - 80
+            Exy = HEIGHT - 103
+            texture = texture0
+            x = 500
+            y = 300
+            level = 0
+        if not craziness:
+            if x <= 65 and 197 >= y >= 147 and level == 4:  # Переход из 4 уровня в 0
                 bullets = []
                 Exit = pygame.image.load('exit_door_180.png')
                 Exx = WIDTH - 80
                 Exy = HEIGHT - 103
                 texture = texture0
-                x = 500
-                y = 300
+                x = WIDTH - 151
+                y = 51
                 level = 0
-                teleportxy = []
-            if x >= WIDTH - 65 and HEIGHT / 2 >= y >= HEIGHT / 2 - 50 and level == 3:  # Переход из 3 уровня в 0
-                bullets = []
-                Exit = pygame.image.load('exit_door_180.png')
-                Exx = WIDTH - 80
-                Exy = HEIGHT - 103
-                texture = texture0
-                x = 500
-                y = 300
-                level = 0
-            if not craziness:
-                if x <= 65 and 197 >= y >= 147 and level == 4:  # Переход из 4 уровня в 0
-                    bullets = []
-                    Exit = pygame.image.load('exit_door_180.png')
-                    Exx = WIDTH - 80
-                    Exy = HEIGHT - 103
-                    texture = texture0
-                    x = WIDTH - 151
-                    y = 51
-                    level = 0
 
-            if x >= WIDTH - 105 and y >= HEIGHT - 103 and level == 0:
-                bullets = []
-                speed = 0.5
-                Exit = pygame.image.load('exit_door.png')
-                Exx = WIDTH - 30
-                Exy = 0
-                stalin_shoot = 1
-                texture = texture1  # Переход из 0 уровня в 1
-                x = 0
-                y = HEIGHT - 50
-                level = 1
-                if not npc1:
-                    npc1 += [stalin]
-            if x <= 65 and y <= 100 and level == 0:  # переход из 0 уровня в 2
-                bullets = []
-                Exit = pygame.image.load('exit_door_180.png')
-                Exx = 350
-                Exy = 300
-                texture = texture0
-                x = 60
-                y = 60
-                if not npc2:
-                    npc2 += [stalin2]
-                teleportxy += [WIDTH - 100, 50, WIDTH - 100, 50]
-                level = 2
-            if x <= 65 and y >= HEIGHT - 103 and level == 0:  # переход из 0 уровня в 3
-                bullets = []
-                Exit = pygame.image.load('exit_door_180.png')
-                Exx = WIDTH - 30
-                Exy = HEIGHT / 2 - 50
-                texture = texture1
-                x = 50
-                y = 50
-                level = 3
-            if x >= WIDTH - 100 and y <= 100 and level == 0:  # переход из 0 уровня в 4
-                bullets = []
-                Exit = pygame.image.load('exit_door.png')
-                Exx = 50
-                Exy = 150
-                texture = texture0
-                x = 50
-                y = 50
-                level = 4
+        if x >= WIDTH - 105 and y >= HEIGHT - 103 and level == 0:
+            bullets = []
+            speed = 0.5
+            Exit = pygame.image.load('exit_door.png')
+            Exx = WIDTH - 30
+            Exy = 0
+            stalin_shoot = 1
+            texture = texture1  # Переход из 0 уровня в 1
+            x = 0
+            y = HEIGHT - 50
+            level = 1
+            if not npc1:
+                npc1 += [stalin]
+        if x <= 65 and y <= 100 and level == 0:  # переход из 0 уровня в 2
+            bullets = []
+            Exit = pygame.image.load('exit_door_180.png')
+            Exx = 300
+            Exy = 300
+            texture = texture0
+            x = 60
+            y = 60
+            if not npc2:
+                npc2 += [stalin2]
+            teleportxy += [WIDTH - 100, 50, WIDTH - 100, 50]
+            level = 2
+        if x <= 65 and y >= HEIGHT - 103 and level == 0:  # переход из 0 уровня в 3
+            bullets = []
+            Exit = pygame.image.load('exit_door_180.png')
+            Exx = WIDTH - 30
+            Exy = HEIGHT / 2 - 50
+            texture = texture1
+            x = 50
+            y = 50
+            level = 3
+        if x >= WIDTH - 100 and y <= 100 and level == 0:  # переход из 0 уровня в 4
+            bullets = []
+            Exit = pygame.image.load('exit_door.png')
+            Exx = 50
+            Exy = 150
+            texture = texture0
+            x = 50
+            y = 50
+            level = 4
     if final:
         if not good:
             screen.fill((0, 0, 0))
@@ -996,7 +987,7 @@ while True:
         f2 = pygame.font.Font(None, 62)
         text1 = f1.render("Вы умерли", True,
                           (255, 0, 0))
-        text2 = f1.render("Вы выйграли!", True,
+        text2 = f1.render("Вы выиграли!", True,
                           (255, 0, 0))
         if not good:
             screen.blit(text1, (400, 330))
