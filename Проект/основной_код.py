@@ -33,7 +33,7 @@ key4 = 0
 key40 = 0
 level = 0
 size = 50
-weapon = 2
+weapon = 1
 craziness = 0
 stalin_shoot = 1
 x0 = 100
@@ -167,6 +167,7 @@ class Gun:
         так стреляют npc
         """
         new_ball = snaryad(self.x + 50, self.y, (255, 10, 10), 10, 2)
+        new_ball.t = pg.time.get_ticks()
         self.an = math.atan2((y - new_ball.y), (x - new_ball.x))
         new_ball.vx = math.cos(self.an) / 2
         new_ball.vy = math.sin(self.an) / 2
@@ -181,6 +182,7 @@ class Gun:
         так стреляю я
         """
         new_ball = snaryad(self.x + 20, self.y + 20, (10, 120, 10), 5, 2)
+        new_ball.t = pg.time.get_ticks()
         self.an = math.atan2((event.pos[1] - new_ball.y), (event.pos[0] - new_ball.x))
         new_ball.vx = 2 * math.cos(self.an)
         new_ball.vy = 2 * math.sin(self.an)
@@ -197,7 +199,7 @@ class snaryad:
         self.color = color
         self.vx = v
         self.vy = v
-
+        self.t = 0
     def draw(self, screen):
         """
         рисует снаряд
@@ -683,21 +685,22 @@ Exy = HEIGHT - 103
 texture = texture0
 attack = False
 gun = Gun(screen, x, y)
+ts = 0
+tl = 0
+tm = 0
 t = 0
 t1 = 0
 t2 = 0
 t3 = 0
 t4 = 0
 score = 100
-score2 = 20
-stalin = NPC(WIDTH - 100, 50, 1, 1, 'Stalin.jpg', 50, 1)
-ghost = NPC(WIDTH - 150, 100, 0.7, 1, 'Ghost.jpg', 50, 45)
-stalin2 = NPC(WIDTH - 100, 50, 1, 2, 'Stalin.jpg', 50, 12)
+score2 = 0
+stalin = NPC(WIDTH - 100, 50, 1, 1, 'эндермен.png', 50, 1)
+stalin2 = NPC(WIDTH - 100, 50, 1, 2, 'эндермен.png', 50, 12)
 balls = [NPC(200, 200, 1, 4, 'crazy ball green.jpg', 50, 1000)]
 wind1 = Winds(0)
 Wind += [wind1]
 npc_gun = Gun(screen, stalin.x, stalin.y)
-npc += [ghost]
 npc1 += [stalin]
 npc2 += [stalin2]
 l = 1
@@ -708,7 +711,7 @@ while True:
         gun.y = y
         if pg.time.get_ticks() > (t + 1300):
             t = pg.time.get_ticks()
-            ghost = NPC(WIDTH - 150, 100, 1, 1, 'Ghost.jpg', 50, 45)
+            ghost = NPC(WIDTH - 150, 100, 1, 1, '50.png', 50, 45)
             npc.append(ghost)
         for np in npc:
             if level == 1:  # условие, чтобы призрак появлялся только на определённом уровне
@@ -725,16 +728,15 @@ while True:
                         running = False
                         final = True
                 if not np.contact():
-                    if pg.time.get_ticks() > (t + 500):
-                        t = pg.time.get_ticks()
+                    if pg.time.get_ticks() > (tl + 500):
+                        tl = pg.time.get_ticks()
                         HP += 1
                 for bullet in bullets:  # убийство призрака
                     if np.hit(bullet):
                         np.hp -= 1
                         if np.hp == 0:
                             npc.remove(np)
-        if stalin in npc1:
-            np = stalin
+        for np in npc1:
             if level == 1:
                 if (np.x - x) ** 2 + (np.y - y) ** 2 <= 40000:
                     np.draw(screen, 1)
@@ -749,11 +751,10 @@ while True:
                             if pg.time.get_ticks() > (t1 + 1800):  # стреляет раз в 1.8 секунды
                                 t1 = pg.time.get_ticks()
                                 npc_gun.fire1()
-                                print('shoot')
         for new_ball in stalin_bullets:
             if (new_ball.x - (x + 20)) ** 2 + (new_ball.y - (y + 20)) ** 2 <= 400:  # мы погибаем при попадании его пули
-                if pg.time.get_ticks() > (t + 300):
-                    t = pg.time.get_ticks()
+                if pg.time.get_ticks() > (tm + 300):
+                    tm = pg.time.get_ticks()
                     HP -= 50
                 if HP <= 0:
                     running = False
@@ -794,7 +795,7 @@ while True:
                 r -= 1
             elif r == 30:
                 r = 35
-        screen.blit(pygame.image.load('11781957.png'), (x, y))
+        screen.blit(pygame.image.load('40.png'), (x, y))
         if HP < 100:
             my_hp(x, y)
             if not craziness:
@@ -857,8 +858,8 @@ while True:
             screen.blit(f_score.render("Огн. шаров: " + str(score2), True, (200, 0, 0)), (0, 20))
             if keys[pygame.K_LEFT] or keys[pygame.K_RIGHT] or keys[pygame.K_UP] or keys[pygame.K_DOWN]:
                 if score2 > 0:
-                    if pg.time.get_ticks() > (t + 400) and score > 0:
-                        t = pg.time.get_ticks()
+                    if pg.time.get_ticks() > (ts + 400) and score > 0:
+                        ts = pg.time.get_ticks()
                         buttons_shooting(keys, x, y)
                         score2 -= 1  # чтобы у нового оружия было ограничение на патроны
         if breeze:
@@ -881,22 +882,20 @@ while True:
             else:
                 bullet.draw(screen)
             bullet.flight1()
-            if pg.time.get_ticks() > (t + 1200):  # полёт и частота выстрелов обычных снарядов
-                t = pg.time.get_ticks()
+            if pg.time.get_ticks() > (bullet.t + 1200):  # полёт и частота выстрелов обычных снарядов
                 bullets.pop(bullets.index(bullet))
         for new_ball in stalin_bullets:
             if (x + 20 - new_ball.x) ** 2 + (y + 20 - new_ball.y) ** 2 <= 40000:
                 new_ball.draw(screen)
             new_ball.flight1()
-            if pg.time.get_ticks() > (t + 1000):  # полёт и частота выстрелов снарядов, выпущенных нпс
-                t = pg.time.get_ticks()
+            if pg.time.get_ticks() > (new_ball.t + 1200):  # полёт и частота выстрелов снарядов, выпущенных нпс
                 stalin_bullets.pop(stalin_bullets.index(new_ball))
         for sbullet in sbullets:
             sbullet.draw(screen)  # полёт снарядов, взрывающих стены
             sbullet.flight2(level)
         if x >= WIDTH - 65 and y <= 50 and level == 1:  # Переход из 1 уровня в 0
-            bullets = []  # убираем все летающие снаряды
-            sbullets = []
+            stalin_bullets = []  # убираем все летающие снаряды
+            bullets = []
             Exit = pygame.image.load('exit_door_180.png')
             Exx = WIDTH - 80  # ставим выход в нужное место и нужную картинку на него
             Exy = HEIGHT - 103
@@ -904,6 +903,7 @@ while True:
             x = WIDTH - 150
             y = HEIGHT - 100 # координаты нашего появления
             level = 0
+            speed = 2
             # ниже аналогично
         if 300 <= x <= 315 and 350 >= y >= 300 and level == 2:  # Переход из 2 уровня в 0
             bullets = []
